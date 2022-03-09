@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `lambda-http/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
-<link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../lambda_http/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img src="../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img src="../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `lambda-http&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
+    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../lambda_http/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></div>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../lambda_http/index.html"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -170,39 +170,32 @@
 <span id="168">168</span>
 <span id="169">169</span>
 <span id="170">170</span>
-<span id="171">171</span>
-<span id="172">172</span>
-<span id="173">173</span>
-<span id="174">174</span>
-<span id="175">175</span>
-<span id="176">176</span>
-</pre><pre class="rust">
-<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">missing_docs</span>)]</span>
+</pre><pre class="rust"><code><span class="attribute">#![<span class="ident">warn</span>(<span class="ident">missing_docs</span>)]</span>
 <span class="comment">//#![deny(warnings)]</span>
 <span class="doccomment">//! Enriches the `lambda` crate with [`http`](https://github.com/hyperium/http)</span>
 <span class="doccomment">//! types targeting AWS [ALB](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html), [API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html) REST and HTTP API lambda integrations.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! This crate abstracts over all of these trigger events using standard [`http`](https://github.com/hyperium/http) types minimizing the mental overhead</span>
 <span class="doccomment">//! of understanding the nuances and variation between trigger details allowing you to focus more on your application while also giving you to the maximum flexibility to</span>
-<span class="doccomment">//! transparently use whichever lambda trigger suits your application and cost optimiztions best.</span>
+<span class="doccomment">//! transparently use whichever lambda trigger suits your application and cost optimizations best.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Examples</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ## Hello World</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! The following example is how you would structure your Lambda such that you have a `main` function where you explicitly invoke</span>
-<span class="doccomment">//! `lambda_runtime::run` in combination with the [`handler`](fn.handler.html) function. This pattern allows you to utilize global initialization</span>
+<span class="doccomment">//! `lambda_http::run` in combination with the [`service_fn`](fn.service_fn.html) function. This pattern allows you to utilize global initialization</span>
 <span class="doccomment">//! of tools such as loggers, to use on warm invokes to the same Lambda function after the first request, helping to reduce the latency of</span>
 <span class="doccomment">//! your function&#39;s execution path.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```rust,no_run</span>
-<span class="doccomment">//! use lambda_http::{handler, lambda_runtime::{self, Error}};</span>
+<span class="doccomment">//! use lambda_http::{service_fn, Error};</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! #[tokio::main]</span>
 <span class="doccomment">//! async fn main() -&gt; Result&lt;(), Error&gt; {</span>
 <span class="doccomment">//!     // initialize dependencies once here for the lifetime of your</span>
 <span class="doccomment">//!     // lambda task</span>
-<span class="doccomment">//!     lambda_runtime::run(handler(|request, context| async { Ok(&quot;👋 world!&quot;) })).await?;</span>
+<span class="doccomment">//!     lambda_http::run(service_fn(|request| async { Ok(&quot;👋 world!&quot;) })).await?;</span>
 <span class="doccomment">//!     Ok(())</span>
 <span class="doccomment">//! }</span>
 <span class="doccomment">//! ```</span>
@@ -210,26 +203,27 @@
 <span class="doccomment">//! ## Leveraging trigger provided data</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! You can also access information provided directly from the underlying trigger events, like query string parameters,</span>
-<span class="doccomment">//! with the [`RequestExt`](trait.RequestExt.html) trait.</span>
+<span class="doccomment">//! or Lambda function context, with the [`RequestExt`](trait.RequestExt.html) trait.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```rust,no_run</span>
-<span class="doccomment">//! use lambda_http::{handler, lambda_runtime::{self, Context, Error}, IntoResponse, Request, RequestExt};</span>
+<span class="doccomment">//! use lambda_http::{service_fn, Error, IntoResponse, Request, RequestExt};</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! #[tokio::main]</span>
 <span class="doccomment">//! async fn main() -&gt; Result&lt;(), Error&gt; {</span>
-<span class="doccomment">//!     lambda_runtime::run(handler(hello)).await?;</span>
+<span class="doccomment">//!     lambda_http::run(service_fn(hello)).await?;</span>
 <span class="doccomment">//!     Ok(())</span>
 <span class="doccomment">//! }</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! async fn hello(</span>
-<span class="doccomment">//!     request: Request,</span>
-<span class="doccomment">//!     _: Context</span>
+<span class="doccomment">//!     request: Request</span>
 <span class="doccomment">//! ) -&gt; Result&lt;impl IntoResponse, Error&gt; {</span>
+<span class="doccomment">//!     let _context = request.lambda_context();</span>
+<span class="doccomment">//!</span>
 <span class="doccomment">//!     Ok(format!(</span>
 <span class="doccomment">//!         &quot;hello {}&quot;,</span>
 <span class="doccomment">//!         request</span>
 <span class="doccomment">//!             .query_string_parameters()</span>
-<span class="doccomment">//!             .get(&quot;name&quot;)</span>
+<span class="doccomment">//!             .first(&quot;name&quot;)</span>
 <span class="doccomment">//!             .unwrap_or_else(|| &quot;stranger&quot;)</span>
 <span class="doccomment">//!     ))</span>
 <span class="doccomment">//! }</span>
@@ -241,19 +235,18 @@
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">maplit</span>;
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">http</span>::{<span class="self">self</span>, <span class="ident">Response</span>};
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">lambda_runtime</span>::{<span class="self">self</span>, <span class="ident">Context</span>};
-<span class="kw">use</span> <span class="ident">lambda_runtime</span>::{<span class="ident">Error</span>, <span class="ident">Handler</span> <span class="kw">as</span> <span class="ident">LambdaHandler</span>};
+<span class="kw">use</span> <span class="ident">lambda_runtime::LambdaEvent</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">lambda_runtime</span>::{<span class="self">self</span>, <span class="ident">service_fn</span>, <span class="ident">tower</span>, <span class="ident">Context</span>, <span class="ident">Error</span>, <span class="ident">Service</span>};
 
-<span class="kw">mod</span> <span class="ident">body</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">ext</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">request</span>;
 <span class="kw">mod</span> <span class="ident">response</span>;
-<span class="kw">mod</span> <span class="ident">strmap</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">body::Body</span>, <span class="ident">ext::RequestExt</span>, <span class="ident">response::IntoResponse</span>, <span class="ident">strmap::StrMap</span>};
+<span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">ext::RequestExt</span>, <span class="ident">response::IntoResponse</span>};
 <span class="kw">use</span> <span class="kw">crate</span>::{
     <span class="ident">request</span>::{<span class="ident">LambdaRequest</span>, <span class="ident">RequestOrigin</span>},
     <span class="ident">response::LambdaResponse</span>,
 };
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">aws_lambda_events::encodings::Body</span>;
 <span class="kw">use</span> <span class="ident">std</span>::{
     <span class="ident">future::Future</span>,
     <span class="ident">marker::PhantomData</span>,
@@ -264,43 +257,9 @@
 <span class="doccomment">/// Type alias for `http::Request`s with a fixed [`Body`](enum.Body.html) type</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Request</span> <span class="op">=</span> <span class="ident">http::Request</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>;
 
-<span class="doccomment">/// Functions serving as ALB and API Gateway REST and HTTP API handlers must conform to this type.</span>
+<span class="doccomment">/// Future that will convert an [`IntoResponse`] into an actual [`LambdaResponse`]</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// This can be viewed as a `lambda_runtime::Handler` constrained to `http` crate `Request` and `Response` types</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Handler</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>: <span class="ident">Sized</span> {
-    <span class="doccomment">/// The type of Error that this Handler will return</span>
-    <span class="kw">type</span> <span class="ident">Error</span>;
-    <span class="doccomment">/// The type of Response this Handler will return</span>
-    <span class="kw">type</span> <span class="ident">Response</span>: <span class="ident">IntoResponse</span>;
-    <span class="doccomment">/// The type of Future this Handler will return</span>
-    <span class="kw">type</span> <span class="ident">Fut</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="ident">::Response</span>, <span class="self">Self</span><span class="ident">::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;a</span>;
-    <span class="doccomment">/// Function used to execute handler behavior</span>
-    <span class="kw">fn</span> <span class="ident">call</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">event</span>: <span class="ident">Request</span>, <span class="ident">context</span>: <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Fut</span>;
-}
-
-<span class="doccomment">/// Adapts a [`Handler`](trait.Handler.html) to the `lambda_runtime::run` interface</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">handler</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">H</span>: <span class="ident">Handler</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">handler</span>: <span class="ident">H</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Adapter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">H</span><span class="op">&gt;</span> {
-    <span class="ident">Adapter</span> {
-        <span class="ident">handler</span>,
-        <span class="ident">_pd</span>: <span class="ident">PhantomData</span>,
-    }
-}
-
-<span class="doccomment">/// An implementation of `Handler` for a given closure return a `Future` representing the computed response</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">F</span>, <span class="ident">R</span>, <span class="ident">Fut</span><span class="op">&gt;</span> <span class="ident">Handler</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">F</span>
-<span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="ident">Request</span>, <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Fut</span>,
-    <span class="ident">R</span>: <span class="ident">IntoResponse</span>,
-    <span class="ident">Fut</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">Error</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;a</span>,
-{
-    <span class="kw">type</span> <span class="ident">Response</span> <span class="op">=</span> <span class="ident">R</span>;
-    <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Error</span>;
-    <span class="kw">type</span> <span class="ident">Fut</span> <span class="op">=</span> <span class="ident">Fut</span>;
-    <span class="kw">fn</span> <span class="ident">call</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">event</span>: <span class="ident">Request</span>, <span class="ident">context</span>: <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Fut</span> {
-        (<span class="self">self</span>)(<span class="ident">event</span>, <span class="ident">context</span>)
-    }
-}
-
+<span class="doccomment">/// This is used by the `Adapter` wrapper and is completely internal to the `lambda_http::run` function.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TransformResponse</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">R</span>, <span class="ident">E</span><span class="op">&gt;</span> {
     <span class="ident">request_origin</span>: <span class="ident">RequestOrigin</span>,
@@ -312,46 +271,75 @@
     <span class="ident">R</span>: <span class="ident">IntoResponse</span>,
 {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">LambdaResponse</span>, <span class="ident">E</span><span class="op">&gt;</span>;
-    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TaskContext</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="self">Self</span><span class="ident">::Output</span><span class="op">&gt;</span> {
+
+    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">TaskContext</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Output</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">fut</span>.<span class="ident">as_mut</span>().<span class="ident">poll</span>(<span class="ident">cx</span>) {
-            <span class="ident">Poll::Ready</span>(<span class="ident">result</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Poll::Ready</span>(
+            <span class="ident">Poll::Ready</span>(<span class="ident">result</span>) =&gt; <span class="ident">Poll::Ready</span>(
                 <span class="ident">result</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">resp</span><span class="op">|</span> <span class="ident">LambdaResponse::from_response</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">request_origin</span>, <span class="ident">resp</span>.<span class="ident">into_response</span>())),
             ),
-            <span class="ident">Poll::Pending</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Poll::Pending</span>,
+            <span class="ident">Poll::Pending</span> =&gt; <span class="ident">Poll::Pending</span>,
         }
     }
 }
 
-<span class="doccomment">/// Exists only to satisfy the trait cover rule for `lambda_runtime::Handler` impl</span>
+<span class="doccomment">/// Wraps a `Service&lt;Request&gt;` in a `Service&lt;LambdaEvent&lt;Request&gt;&gt;`</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// User code should never need to interact with this type directly. Since `Adapter` implements `Handler`</span>
-<span class="doccomment">/// It serves as a opaque trait covering type.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// See [this article](http://smallcultfollowing.com/babysteps/blog/2015/01/14/little-orphan-impls/)</span>
-<span class="doccomment">/// for a larger explaination of why this is nessessary</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Adapter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">H</span>: <span class="ident">Handler</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-    <span class="ident">handler</span>: <span class="ident">H</span>,
-    <span class="ident">_pd</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">H</span><span class="op">&gt;</span>,
+<span class="doccomment">/// This is completely internal to the `lambda_http::run` function.</span>
+<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Adapter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">R</span>, <span class="ident">S</span><span class="op">&gt;</span> {
+    <span class="ident">service</span>: <span class="ident">S</span>,
+    <span class="ident">_phantom_data</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">R</span><span class="op">&gt;</span>,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">H</span>: <span class="ident">Handler</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">Handler</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Adapter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">H</span><span class="op">&gt;</span> {
-    <span class="kw">type</span> <span class="ident">Response</span> <span class="op">=</span> <span class="ident">H::Response</span>;
-    <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">H::Error</span>;
-    <span class="kw">type</span> <span class="ident">Fut</span> <span class="op">=</span> <span class="ident">H::Fut</span>;
-    <span class="kw">fn</span> <span class="ident">call</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">event</span>: <span class="ident">Request</span>, <span class="ident">context</span>: <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Fut</span> {
-        <span class="self">self</span>.<span class="ident">handler</span>.<span class="ident">call</span>(<span class="ident">event</span>, <span class="ident">context</span>)
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">R</span>, <span class="ident">S</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Adapter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">R</span>, <span class="ident">S</span><span class="op">&gt;</span>
+<span class="kw">where</span>
+    <span class="ident">S</span>: <span class="ident">Service</span><span class="op">&lt;</span><span class="ident">Request</span>, <span class="ident">Response</span> <span class="op">=</span> <span class="ident">R</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span>,
+    <span class="ident">S::Future</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;a</span>,
+    <span class="ident">R</span>: <span class="ident">IntoResponse</span>,
+{
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">service</span>: <span class="ident">S</span>) -&gt; <span class="self">Self</span> {
+        <span class="ident">Adapter</span> {
+            <span class="ident">service</span>,
+            <span class="ident">_phantom_data</span>: <span class="ident">PhantomData</span>,
+        }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">H</span>: <span class="ident">Handler</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">LambdaHandler</span><span class="op">&lt;</span><span class="ident">LambdaRequest</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>, <span class="ident">LambdaResponse</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Adapter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">H</span><span class="op">&gt;</span> {
-    <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">H::Error</span>;
-    <span class="kw">type</span> <span class="ident">Fut</span> <span class="op">=</span> <span class="ident">TransformResponse</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">H::Response</span>, <span class="self">Self</span><span class="ident">::Error</span><span class="op">&gt;</span>;
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">R</span>, <span class="ident">S</span><span class="op">&gt;</span> <span class="ident">Service</span><span class="op">&lt;</span><span class="ident">LambdaEvent</span><span class="op">&lt;</span><span class="ident">LambdaRequest</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Adapter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">R</span>, <span class="ident">S</span><span class="op">&gt;</span>
+<span class="kw">where</span>
+    <span class="ident">S</span>: <span class="ident">Service</span><span class="op">&lt;</span><span class="ident">Request</span>, <span class="ident">Response</span> <span class="op">=</span> <span class="ident">R</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span>,
+    <span class="ident">S::Future</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;a</span>,
+    <span class="ident">R</span>: <span class="ident">IntoResponse</span>,
+{
+    <span class="kw">type</span> <span class="ident">Response</span> <span class="op">=</span> <span class="ident">LambdaResponse</span>;
+    <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Error</span>;
+    <span class="kw">type</span> <span class="ident">Future</span> <span class="op">=</span> <span class="ident">TransformResponse</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">R</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>;
 
-    <span class="kw">fn</span> <span class="ident">call</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">event</span>: <span class="ident">LambdaRequest</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>, <span class="ident">context</span>: <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Fut</span> {
-        <span class="kw">let</span> <span class="ident">request_origin</span> <span class="op">=</span> <span class="ident">event</span>.<span class="ident">request_origin</span>();
-        <span class="kw">let</span> <span class="ident">fut</span> <span class="op">=</span> <span class="ident">Box::pin</span>(<span class="self">self</span>.<span class="ident">handler</span>.<span class="ident">call</span>(<span class="ident">event</span>.<span class="ident">into</span>(), <span class="ident">context</span>));
+    <span class="kw">fn</span> <span class="ident">poll_ready</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">_cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">core::task::Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">core::task::Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+        <span class="ident">core::task::Poll::Ready</span>(<span class="prelude-val">Ok</span>(()))
+    }
+
+    <span class="kw">fn</span> <span class="ident">call</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">req</span>: <span class="ident">LambdaEvent</span><span class="op">&lt;</span><span class="ident">LambdaRequest</span><span class="op">&gt;</span>) -&gt; <span class="ident"><span class="self">Self</span>::Future</span> {
+        <span class="kw">let</span> <span class="ident">request_origin</span> <span class="op">=</span> <span class="ident">req</span>.<span class="ident">payload</span>.<span class="ident">request_origin</span>();
+        <span class="kw">let</span> <span class="ident">event</span>: <span class="ident">Request</span> <span class="op">=</span> <span class="ident">req</span>.<span class="ident">payload</span>.<span class="ident">into</span>();
+        <span class="kw">let</span> <span class="ident">fut</span> <span class="op">=</span> <span class="ident">Box::pin</span>(<span class="self">self</span>.<span class="ident">service</span>.<span class="ident">call</span>(<span class="ident">event</span>.<span class="ident">with_lambda_context</span>(<span class="ident">req</span>.<span class="ident">context</span>)));
         <span class="ident">TransformResponse</span> { <span class="ident">request_origin</span>, <span class="ident">fut</span> }
     }
 }
-</pre></div>
-</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="lambda_http" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script></body></html>
+
+<span class="doccomment">/// Starts the Lambda Rust runtime and begins polling for events on the [Lambda</span>
+<span class="doccomment">/// Runtime APIs](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-api.html).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This takes care of transforming the LambdaEvent into a [`Request`] and then</span>
+<span class="doccomment">/// converting the result into a [`LambdaResponse`].</span>
+<span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">run</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">R</span>, <span class="ident">S</span><span class="op">&gt;</span>(<span class="ident">handler</span>: <span class="ident">S</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span>
+<span class="kw">where</span>
+    <span class="ident">S</span>: <span class="ident">Service</span><span class="op">&lt;</span><span class="ident">Request</span>, <span class="ident">Response</span> <span class="op">=</span> <span class="ident">R</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span>,
+    <span class="ident">S::Future</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;a</span>,
+    <span class="ident">R</span>: <span class="ident">IntoResponse</span>,
+{
+    <span class="ident">lambda_runtime::run</span>(<span class="ident">Adapter::from</span>(<span class="ident">handler</span>)).<span class="kw">await</span>
+}
+</code></pre></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="lambda_http" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0 (9d1b2106e 2022-02-23)" ></div>
+</body></html>
